@@ -1,38 +1,37 @@
 import React, { useState } from "react";
 
 const WaterCalculator: React.FC = () => {
-  // 1. Manage only the raw input states
-  const [weight, setWeight] = useState<number>(70);
+  const [weight, setWeight] = useState<number | "">(70);
   const [activity, setActivity] = useState<number>(0);
 
-  // 2. Derive the goal directly during the render phase.
-  // This avoids "useEffect" and keeps your linter happy.
-  const baseIntake = weight * 0.033;
-  const exerciseAddon = (activity / 30) * 0.35;
-  const goal = baseIntake + exerciseAddon;
+  const numericWeight = weight === "" ? 0 : weight;
+  const goal = numericWeight * 0.033 + (activity / 30) * 0.35;
 
   return (
-    <div className="max-w-md mx-auto mt-12 p-6 bg-zinc-900 rounded-xl shadow-lg space-y-6r">
+    <div className="max-w-md mx-auto mt-12 p-6 bg-zinc-900 rounded-xl shadow-lg space-y-6">
       <div className="flex items-center gap-3 mb-6">
-        <div className="p-3 bg-blue-600 rounded-lg text-2xl">💧</div>
-        <h1 className="text-2xl font-bold tracking-tight text-white">HydroCalc</h1>
+        <h1 className="text-2xl font-bold tracking-tight text-white">
+          HydroCalc
+        </h1>
       </div>
 
       <div className="space-y-6">
-        {/* Weight Input */}
         <div>
           <label className="block text-sm font-medium text-zinc-400 mb-2 font-mono uppercase tracking-tight">
             Body Weight (kg)
           </label>
           <input
             type="number"
-            value={weight}
-            onChange={(e) => setWeight(Math.max(0, Number(e.target.value)))}
-            className="w-full bg-zinc-700 border border-zinc-600 rounded-xl px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
+            value={weight === 0 ? "" : weight}
+            onChange={(e) => {
+              const val = e.target.value;
+              setWeight(val === "" ? "" : Math.max(0, Number(val)));
+            }}
+            placeholder="Enter your weight"
+            className="w-full bg-zinc-800 text-gray-400 border border-zinc-600 rounded-xl px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none transition-all text-white placeholder-zinc-600"
           />
         </div>
 
-        {/* Activity Input */}
         <div>
           <label className="block text-sm font-medium text-zinc-400 mb-2 font-mono uppercase tracking-tight">
             Daily Exercise (minutes)
@@ -53,7 +52,6 @@ const WaterCalculator: React.FC = () => {
 
         <hr className="border-zinc-700" />
 
-        {/* Result Display */}
         <div className="text-center py-4">
           <p className="text-zinc-400 text-sm uppercase tracking-widest mb-1">
             Your Daily Goal
@@ -65,11 +63,6 @@ const WaterCalculator: React.FC = () => {
             Approximately **{Math.round(goal / 0.25)} glasses** (250ml each)
           </p>
         </div>
-      </div>
-
-      <div className="mt-6 p-4 bg-zinc-900/50 rounded-xl text-[10px] text-zinc-500 leading-relaxed border border-zinc-700/30">
-        * Calculation based on ~33ml per kg plus ~350ml per 30 mins of exercise.
-        Consult a professional for specific medical needs.
       </div>
     </div>
   );

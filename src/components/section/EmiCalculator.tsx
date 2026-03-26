@@ -5,8 +5,6 @@ const EMICalculator: React.FC = () => {
   const [interest, setInterest] = useState<number>(7);
   const [tenure, setTenure] = useState<number>(12);
 
-  // --- CALCULATION LOGIC (Derived State) ---
-  // This runs on every render, which is very cheap for simple math.
   const calculateEmi = (): string => {
     if (tenure <= 0) return "0";
 
@@ -20,7 +18,6 @@ const EMICalculator: React.FC = () => {
     return emiCalc.toFixed(2);
   };
 
-  // Assign the result to a variable
   const emi = calculateEmi();
   const totalPayable = parseFloat(emi) * tenure;
   const totalInterest = totalPayable - principal;
@@ -34,44 +31,44 @@ const EMICalculator: React.FC = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-zinc-800 rounded-xl shadow-lg border border-slate-100 mt-10">
+    <div className="max-w-md mx-auto p-6 bg-zinc-900 rounded-xl shadow-lg border border-slate-100 mt-10 font-sans">
       <h2 className="text-2xl font-bold text-white mb-6">EMI Calculator</h2>
 
       <div className="space-y-5">
         <div>
-          <label className="text-sm font-semibold text-white">
-            Principal (Rs)
+          <label className="text-sm font-semibold text-zinc-500 mb-2 ml-1">
+            PRINCIPAL (Rs)
           </label>
           <input
             type="number"
             value={principal || ""}
             onChange={(e) => handleInputChange(e, setPrincipal)}
-            className="w-full p-2.5 bg-slate-50 border rounded-lg outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 outline-none transition-all text-zinc-400 font-sans"
           />
         </div>
 
         <div>
-          <label className="text-sm font-semibold text-white">
-            Interest Rate (%)
+          <label className="text-sm font-semibold text-zinc-500 mb-2 ml-1">
+            INTEREST RATE (%)
           </label>
           <input
             type="number"
             step="0.1"
             value={interest || ""}
             onChange={(e) => handleInputChange(e, setInterest)}
-            className="w-full p-2.5 bg-slate-50 border rounded-lg outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 outline-none transition-all text-zinc-400 font-sans"
           />
         </div>
 
         <div>
-          <label className="text-sm font-semibold text-white">
-            Tenure (Months)
+          <label className="text-sm font-semibold text-zinc-500 mb-2 ml-1">
+            TENURE (Months)
           </label>
           <input
             type="number"
             value={tenure || ""}
             onChange={(e) => handleInputChange(e, setTenure)}
-            className="w-full p-2.5 bg-slate-50 border rounded-lg outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 outline-none transition-all text-zinc-400 font-sans"
           />
         </div>
       </div>
@@ -81,7 +78,7 @@ const EMICalculator: React.FC = () => {
           Monthly EMI
         </p>
         <p className="text-4xl font-black text-white">
-          ₹{Number(emi).toLocaleString()}
+          Rs {Number(emi).toLocaleString()}
         </p>
       </div>
 
@@ -91,7 +88,7 @@ const EMICalculator: React.FC = () => {
             Total Interest
           </p>
           <p className="font-bold text-slate-700">
-            ₹{Math.max(0, totalInterest).toLocaleString()}
+            Rs {Math.max(0, totalInterest).toLocaleString()}
           </p>
         </div>
         <div className="p-3 bg-slate-50 rounded-lg text-center">
@@ -99,7 +96,7 @@ const EMICalculator: React.FC = () => {
             Total Payable
           </p>
           <p className="font-bold text-slate-700">
-            ₹{Math.max(0, totalPayable).toLocaleString()}
+            Rs {Math.max(0, totalPayable).toLocaleString()}
           </p>
         </div>
       </div>

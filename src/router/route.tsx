@@ -14,19 +14,8 @@ import NamePicker from "@/components/section/RandomNamePicker";
 import WordCounter from "@/components/section/WordCounter";
 import WaterCalculator from "@/components/section/waterIntakeCalculator";
 import TypingTest from "@/components/section/Typingtest";
+import MetaTagGenerator from "@/components/section/TagGenerator";
 
-const navLinks = [
-  { path: "/", label: "Random Password Generator" },
-  { path: "/bmi", label: "BMI Calculator" },
-  { path: "/age", label: "Age Calculator" },
-  { path: "/emi", label: "EMI Calculator" },
-  { path: "/si", label: "Simple Interest Calculator" },
-  { path: "/random", label: "Random Name Picker" },
-  { path: "/water", label: "Daily Water Intake Calculator" },
-  { path: "/word", label: "Word counter" },
-  { path: "/tags", label: "OG & Twitter Meta Tags Generator" },
-  { path: "/typing", label: "Typing Speed Test" },
-];
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -45,7 +34,7 @@ export const router = createBrowserRouter(
         <Route path="/random" element={<NamePicker />} />
         <Route path="/water" element={<WaterCalculator />} />
         <Route path="/word" element={<WordCounter />} />
-        <Route path="/tags" element={<BMICalculator />} />
+        <Route path="/tags" element={<MetaTagGenerator />} />
         <Route path="/typing" element={<TypingTest />} />
         <Route path="*" element={<Home />} />
       </Route>

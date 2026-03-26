@@ -38,7 +38,7 @@ export const PasswordGenerator = () => {
 
   return (
     <div className="max-w-md mx-auto mt-12 p-6 bg-zinc-900 rounded-xl shadow-lg space-y-6">
-      <h2 className="text-xl font-semibold text-white">Security Generator</h2>
+      <h2 className="text-xl font-semibold text-white">Password Generator</h2>
 
       {/* Length Slider */}
       <div className="space-y-2">
@@ -53,7 +53,6 @@ export const PasswordGenerator = () => {
         />
       </div>
 
-      {/* Options */}
       <div className="flex flex-col gap-3">
         <label className="flex items-center gap-3 text-zinc-300 cursor-pointer">
           <input
@@ -83,7 +82,7 @@ export const PasswordGenerator = () => {
           readOnly
           value={password}
           placeholder="Click generate..."
-          className="flex-1 bg-black border border-zinc-700 p-2 rounded text-blue-400 font-mono text-sm outline-none"
+          className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 outline-none transition-all text-zinc-400 font-sans"
         />
 
         <button

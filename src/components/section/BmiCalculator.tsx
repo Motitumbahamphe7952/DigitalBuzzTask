@@ -24,31 +24,31 @@ export const BMICalculator = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-12 p-6 bg-zinc-900 rounded-xl shadow-lg space-y-6">
+    <div className="max-w-md mx-auto mt-12 p-6 bg-zinc-900 rounded-xl shadow-lg space-y-6 font-sans">
       <h2 className="text-xl font-semibold text-white text-center">
         BMI Calculator
       </h2>
 
       {/* Weight Input */}
       <div className="flex flex-col gap-1">
-        <label className="text-sm text-zinc-400">Weight (kg)</label>
+        <label className="text-sm text-zinc-400">WEIGHT (kg)</label>
         <input
           type="number"
           value={weight}
           onChange={(e) => setWeight(e.target.value)}
-          className="p-2 rounded bg-black border border-zinc-700 text-white outline-none"
+          className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 outline-none transition-all text-zinc-400 font-sans"
           placeholder="Enter weight"
         />
       </div>
 
       {/* Height Input */}
       <div className="flex flex-col gap-1">
-        <label className="text-sm text-zinc-400">Height (cm)</label>
+        <label className="text-sm text-zinc-400">HEIGHT (cm)</label>
         <input
           type="number"
           value={height}
           onChange={(e) => setHeight(e.target.value)}
-          className="p-2 rounded bg-black border border-zinc-700 text-white outline-none"
+          className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 outline-none transition-all text-zinc-400 font-sans"
           placeholder="Enter height"
         />
       </div>

@@ -3,18 +3,16 @@ import React, { useState } from "react";
 interface StatBoxProps {
   label: string;
   value: string | number;
-  color?: string; // optional Tailwind color class
+  color?: string; 
 }
 
 const WordCounter: React.FC = () => {
   const [text, setText] = useState<string>("");
 
-  // Word count logic: split by whitespace and filter out empty strings
   const wordCount = text.trim() === "" ? 0 : text.trim().split(/\s+/).length;
   const charCount = text.length;
   const sentenceCount = text.split(/[.!?]+/).filter(Boolean).length;
 
-  // Average reading speed: ~200 words per minute
   const readingTime = Math.ceil(wordCount / 200);
 
   const handleClear = () => setText("");
@@ -33,7 +31,6 @@ const WordCounter: React.FC = () => {
         </button>
       </div>
 
-      {/* Text Area */}
       <textarea
         value={text}
         onChange={(e) => setText(e.target.value)}
@@ -41,7 +38,6 @@ const WordCounter: React.FC = () => {
         className="w-full h-64 bg-zinc-900 text-zinc-100 p-4 rounded-xl border border-zinc-700 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none resize-none transition-all placeholder:text-zinc-600"
       />
 
-      {/* Stats Grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
         <StatBox label="Words" value={wordCount} color="text-indigo-400" />
         <StatBox
@@ -64,7 +60,6 @@ const WordCounter: React.FC = () => {
   );
 };
 
-// Reusable Stat Component
 const StatBox= ({ label, value, color }: StatBoxProps) => (
   <div className="bg-zinc-900/50 p-4 rounded-xl border border-zinc-700/50 text-center">
     <p className="text-[10px] uppercase tracking-widest text-zinc-500 mb-1 font-bold">

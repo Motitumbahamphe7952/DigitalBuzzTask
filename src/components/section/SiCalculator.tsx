@@ -34,14 +34,14 @@ const InterestCalculator: React.FC = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-zinc-800 rounded-xl shadow-lg border border-gray-100 font-sans">
+    <div className="max-w-md mx-auto mt-10 p-6 bg-zinc-900 rounded-xl shadow-lg border border-gray-100 font-sans">
       <h2 className="text-2xl font-bold text-white mb-6 text-center">
         Interest Calculator
       </h2>
 
       <form onSubmit={handleCalculate} className="space-y-4">
         <div>
-          <label className="block text-sm font-semibold text-white mb-1">
+          <label className="block text-xs font-bold text-zinc-500 uppercase tracking-widest mb-2 ml-1">
             Principal Amount (Rs)
           </label>
           <input
@@ -51,14 +51,15 @@ const InterestCalculator: React.FC = () => {
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
               setPrincipal(e.target.value)
             }
-            className="w-full p-2.5 bg-slate-50 border rounded-lg outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 outline-none transition-all text-gray-400"
+            placeholder="Enter the principal"
             required
           />
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-white mb-1">
-            Annual Interest Rate (%)
+          <label className="block text-sm font-semibold text-zinc-500 mb-1">
+            ANNUAL INTEREST RATE (%)
           </label>
           <input
             type="number"
@@ -67,14 +68,15 @@ const InterestCalculator: React.FC = () => {
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
               setRate(e.target.value)
             }
-            className="w-full p-2.5 bg-slate-50 border rounded-lg outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 focus:ring-2 text-gray-400 focus:ring-indigo-500 outline-none transition-all"
+            placeholder="Enter Rate"
             required
           />
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-white mb-1">
-            Time (Years)
+          <label className="block text-sm font-semibold text-zinc-500 mb-1">
+            TIME (Yrs)
           </label>
           <input
             type="number"
@@ -83,7 +85,8 @@ const InterestCalculator: React.FC = () => {
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
               setTime(e.target.value)
             }
-            className="w-full p-2.5 bg-slate-50 border rounded-lg outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 focus:ring-2 text-gray-400 focus:ring-indigo-500 outline-none transition-all"
+            placeholder="Enter Time"
             required
           />
         </div>

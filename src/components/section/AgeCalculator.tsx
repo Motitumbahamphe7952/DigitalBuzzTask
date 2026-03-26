@@ -60,21 +60,21 @@ const AgeCalculator: React.FC = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-12 p-6 bg-zinc-900 rounded-xl shadow-lg space-y-6">
+    <div className="max-w-md mx-auto mt-12 p-6 bg-zinc-900 rounded-xl shadow-lg space-y-6 font-sans">
       <h2 className="text-2xl font-bold text-white text-center">
         Age Calculator
       </h2>
 
       <div className="flex flex-col space-y-2">
-        <label htmlFor="birthdate" className="text-zinc-300 font-medium">
-          Enter your birthdate:
+        <label htmlFor="birthdate" className="text-zinc-500 font-medium font-sans">
+          ENTER YOUR BIRTHDATE:
         </label>
         <input
           type="date"
           id="birthdate"
           value={birthDate}
           onChange={handleDateChange}
-          className="p-3 rounded-lg border border-zinc-700 bg-zinc-800 text-white focus:ring-2 focus:ring-blue-500 outline-none transition"
+          className="p-3 rounded-lg border border-zinc-800 bg-zinc-800 text-zinc-500 focus:ring-2 focus:ring-blue-500 outline transition"
         />
       </div>
 

@@ -39,20 +39,19 @@ export const NamePicker = () => {
         Random Name Picker
       </h2>
 
-      {/* Input Form */}
       <form onSubmit={addName} className="flex gap-2 mb-6">
         <input
           type="text"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          placeholder="Enter a name..."
-          className="flex-1 px-4 py-2 bg-zinc-700 border border-zinc-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
+          placeholder="Enter a name"
+          className="flex-1 px-4 py-2 bg-zinc-800 border border-zinc-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
         />
         <button
           type="submit"
           className="px-4 py-2 bg-blue-600 hover:bg-blue-500 transition-colors rounded-lg font-medium"
         >
-          Add
+          ADD
         </button>
       </form>
 
@@ -60,7 +59,7 @@ export const NamePicker = () => {
       <div className="mb-6">
         <div className="flex justify-between items-center mb-2">
           <span className="text-sm text-zinc-400">
-            Participants: {names.length}
+            PARTICIPANTS: {names.length}
           </span>
           {names.length > 0 && (
             <button
@@ -86,7 +85,6 @@ export const NamePicker = () => {
         </div>
       </div>
 
-      {/* Action Button */}
       <button
         onClick={pickRandom}
         disabled={names.length === 0 || isPicking}
@@ -96,10 +94,9 @@ export const NamePicker = () => {
             : "bg-green-600 hover:bg-green-500 text-white"
         }`}
       >
-        {isPicking ? "Picking..." : "Pick a Name!"}
+        {isPicking ? "Picking..." : "Pick a Name"}
       </button>
 
-      {/* Result Display */}
       {winner && !isPicking && (
         <div className="mt-6 p-4 bg-zinc-700 border-2 border-green-500 rounded-xl text-center animate-bounce">
           <p className="text-zinc-400 text-sm uppercase tracking-widest">
