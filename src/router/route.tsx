@@ -20,11 +20,11 @@ export const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route element={<Layout />}>
-        <Route path="/" element={<Home />} />
         <Route path="/job/:id" element={<Home />} />
       </Route>
 
       <Route element={<Layout showNavbar={true} showFooter={false} />}>
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Home />} />
         <Route path="/" element={<PasswordGenerator />} />
         <Route path="/bmi" element={<BMICalculator />} />
