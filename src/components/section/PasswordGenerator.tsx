@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 
 export const PasswordGenerator = () => {
   const [length, setLength] = useState<number>(16);
@@ -7,7 +7,7 @@ export const PasswordGenerator = () => {
   const [includeSymbols, setIncludeSymbols] = useState<boolean>(true);
   const [copied, setCopied] = useState<boolean>(false);
 
-  const generatePassword = useCallback(() => {
+  const generatePassword = () => {
     let charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const numbers = "0123456789";
     const symbols = "!@#$%^&*()_+~`|}{[]:;?><,./-=";
@@ -25,7 +25,7 @@ export const PasswordGenerator = () => {
 
     setPassword(newPassword);
     setCopied(false);
-  }, [length, includeNumbers, includeSymbols]);
+  };
 
   const copyToClipboard = () => {
     if (!password) return;
@@ -37,7 +37,7 @@ export const PasswordGenerator = () => {
   };
 
   return (
-    <div className="p-6 max-w-md mx-auto bg-zinc-900 border border-zinc-800 rounded-xl space-y-6">
+    <div className="max-w-md mx-auto mt-12 p-6 bg-zinc-900 rounded-xl shadow-lg space-y-6">
       <h2 className="text-xl font-semibold text-white">Security Generator</h2>
 
       {/* Length Slider */}
