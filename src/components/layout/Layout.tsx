@@ -1,17 +1,18 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import FlexColumn from "../common/FlexColumn";
+import "@/index.css";
+import type { layoutprops } from "@/types/interface";
 
-const Layout = () => {
+const Layout = ({ showNavbar = true, showFooter = true }: layoutprops) => {
   return (
-    <FlexColumn className="min-h-screen">
-      <Navbar />
-      <main className="flex-1">
+    <div className="container">
+      {showNavbar && <Navbar />}
+      <main className="flex-1 overflow-auto">
         <Outlet />
       </main>
-      <Footer />
-    </FlexColumn>
+      {showFooter && <Footer />}
+    </div>
   );
 };
 

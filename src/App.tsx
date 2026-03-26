@@ -1,7 +1,6 @@
-const App = () => {
-  return (
-    <div>This a REACT STARTER KIT</div>
-  )
-}
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router/route";
 
-export default App
+export default function App() {
+  return <RouterProvider router={router} />;
+}

@@ -1,82 +1,51 @@
-import { useState } from "react";
-import { Briefcase, Menu, X } from "lucide-react"; // Added Menu and X icons
-import FlexRow from "../common/FlexRow";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
+import { FlexRow } from "../common";
+import type { classProp } from "@/types/interface";
 
-const NavBar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const navLinks = [
+  { path: "/", label: "Random Password Generator" },
+  { path: "/bmi", label: "BMI Calculator" },
+  { path: "/age", label: "Age Calculator" },
+  { path: "/emi", label: "EMI Calculator" },
+  { path: "/si", label: "Simple Interest Calculator" },
+  { path: "/random", label: "Random Name Picker" },
+  { path: "/water", label: "Daily Water Intake Calculator" },
+  { path: "/word", label: "Word counter" },
+  { path: "/tags", label: "OG & Twitter Meta Tags Generator" },
+  { path: "/typing", label: "Typing Speed Test" },
+];
 
-  const dropdown = [
-    { path: "/", label: "Home" },
-    { path: "/jobs", label: "Jobs" },
-    { path: "/about", label: "About Us" },
-    { path: "/contact", label: "Contact Us" },
-  ];
+const NavBar = ({ className }: classProp) => {
+  const location = useLocation();
 
   return (
-    <nav className="w-full bg-white border-b-2 sticky top-0 z-100">
-      {/* Main Container */}
-      <FlexRow className="w-full h-auto py-2 justify-between items-center px-4 md:px-14 lg:px-30 transition-colors duration-300">
-        {/* Logo Section */}
-        <FlexRow className="items-center h-auto gap-2">
-          <Briefcase className="w-6 h-6 lg:w-8 lg:h-8 text-primary" />
-          <span className="text-lg font-bold">CareerSathi</span>
-        </FlexRow>
-
-        {/* Desktop Navigation - Hidden on Mobile/Tablet */}
-        <div className="hidden lg:flex items-center gap-4 ml-12">
-          {dropdown.map((item) => (
+    <nav
+      className={`w-full py-4 flex justify-center items-center z-50 relative px-8 ${className}`}
+    >
+      <FlexRow className="relative items-center justify-center gap-2 text-gray-800 text-xs font-medium rounded-full border-2 p-1 bg-white/50 backdrop-blur-md">
+        {navLinks.map((link) => {
+          const isActive = location.pathname === link.path;
+          return (
             <NavLink
-              key={item.label}
-              to={item.path}
-              className={({ isActive }) =>
-                `px-4 py-4 text-lg font-medium transition-colors ${isActive ? "text-primary" : "text-gray-600 hover:text-primary"}`
-              }
+              key={link.path}
+              to={link.path}
+              className={`relative px-6 py-2 transition-colors duration-300 ${
+                isActive ? "text-white" : "hover:text-black"
+              }`}
             >
-              {item.label}
+              {isActive && (
+                <motion.div
+                  layoutId="active-pill"
+                  className="absolute inset-0 bg-black rounded-full -z-10"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
+              {link.label}
             </NavLink>
-          ))}
-        </div>
-
-        {/* Actions & Mobile Toggle */}
-        <FlexRow className="items-center gap-0 sm:gap-4">
-          <button className="text-primary font-medium hidden sm:inline cursor-pointer px-4 py-2 border-2 rounded-xs border-gray-200 hover:bg-gray-50">
-            Login
-          </button>
-          <span className="bg-primary hover:bg-primary-dark text-white text-sm sm:text-base px-4 py-2 rounded-xs leading-tight whitespace-nowrap cursor-pointer transition-all">
-            Register
-          </span>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden p-2 text-gray-600"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </FlexRow>
+          );
+        })}
       </FlexRow>
-
-      {/* Mobile Sidebar/Dropdown */}
-      <div
-        className={`lg:hidden transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? "max-h-64 border-b" : "max-h-0"}`}
-      >
-        <div className="flex flex-col p-4 space-y-2 bg-gray-50">
-          {dropdown.map((item) => (
-            <NavLink
-              key={item.label}
-              to={item.path}
-              onClick={() => setIsOpen(false)}
-              className="px-4 py-3 text-base font-medium text-gray-700 hover:bg-white hover:text-primary rounded-md"
-            >
-              {item.label}
-            </NavLink>
-          ))}
-          <button className="sm:hidden w-full text-left px-4 py-3 text-base font-medium text-primary">
-            Login
-          </button>
-        </div>
-      </div>
     </nav>
   );
 };
